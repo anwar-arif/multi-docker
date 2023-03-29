@@ -25,6 +25,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - name: build images
         run: |
           docker build -t anr35/multi-client ./client
