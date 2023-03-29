@@ -13,22 +13,18 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
       - name: build docker image
         run: |
           docker build -t anr35/react-test -f ./client/Dockerfile.dev ./client
       - name: run tests for react app
         run: |
-          docker run anr35/react-test npm test -- --coverage
+          docker run -e CI=true anr35/react-test npm test -- --coverage
   upload_image:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
       - name: build images
         run: |
           docker build -t anr35/multi-client ./client
