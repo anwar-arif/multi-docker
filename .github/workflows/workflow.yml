@@ -21,7 +21,7 @@ jobs:
       - name: run tests for react app
         run: |
           docker run -e CI=true anr35/react-test npm test -- --coverage
-  upload_image_to_docker_hub:
+  upload_image:
     needs: build
     runs-on: ubuntu-latest
     steps:
