@@ -43,3 +43,21 @@ jobs:
           docker push anr35/multi-nginx
           docker push anr35/multi-server
           docker push anr35/multi-worker
+  deploy:
+    needs: upload_image
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+      - name: generate deployment package
+        run: zip -r deploy.zip docker-compose.yml
+      - name: deploy to beanstalk
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: multi-docker
+          environment_name: Multidocker-env
+          version_label: ${{github.sha}}
+          region: ap-southeast-1
+          deployment_package: deploy.zip
