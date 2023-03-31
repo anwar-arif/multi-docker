@@ -18,7 +18,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Welcome to AWS!
+            Welcome to Fibonacci world!
           </a>
           <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
