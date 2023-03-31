@@ -58,6 +58,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: multi-docker
           environment_name: Multidocker-env
-          version_label: ${{github.sha}}
+          version_label: multi-docker-${{github.sha::7}}
           region: ap-southeast-1
           deployment_package: deploy.zip
