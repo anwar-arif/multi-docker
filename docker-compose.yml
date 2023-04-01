@@ -7,7 +7,7 @@ services:
     hostname: nginx
     ports:
       - "80:80"
-  server:
+  api:
     image: "anr35/multi-server"
     mem_limit: 128m
     hostname: api
