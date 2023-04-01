@@ -14,11 +14,11 @@ services:
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
-      - PGUSER=$PGUSER
-      - PGHOST=$PGHOST
-      - PGDATABASE=$PGDATABASE
-      - PGPASSWORD=$PGPASSWORD
-      - PGPORT=$PGPORT
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_HOST=$POSTGRES_HOST
+      - POSTGRES_DB=$POSTGRES_DB
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_PORT=$POSTGRES_PORT
   client:
     image: "anr35/multi-client"
     hostname: client
